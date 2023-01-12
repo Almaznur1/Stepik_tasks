@@ -16,12 +16,17 @@
 Программа должна вывести номера зараженных холодильников через пробел.
 Если таких холодильников нет, ничего выводить не нужно.'''
 
-anton = 'anton'
 infected_fridges = []
-letters = []
+anton = 'anton'
 arr = [input() for n in range(int(input()))]
 for element in arr:
-    for i in range(len(element)):
-        if element[i] in anton:
-            letters.append(element[i])
-     
+    j = 0
+    letters = []
+    for i in enumerate(element):
+        if i[1] in anton[j]:
+            letters.append(i[1])
+            j += 1
+            if j == 5:
+                infected_fridges.append(arr.index(element) + 1)
+                break
+print(*infected_fridges)
